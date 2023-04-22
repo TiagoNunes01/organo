@@ -9,7 +9,7 @@ const Formulario = () => {
                 <CampoTexto label="Nome" placeholder="Digite seu nome" />
                 <CampoTexto label="Cargo" placeholder="Digite seu cargo" />
                 <CampoTexto label="Imagem" placeholder="Digite seu imagem" />
-            </form>    
+            </form>
         </section>
     )
 }
