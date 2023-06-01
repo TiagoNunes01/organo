@@ -4,27 +4,29 @@ import ListaSuspensa from '../ListaSuspensa'
 import Botao from '../Botao'
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
 
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
-    const aoSalvar = (e) => {
-        e.preventDefault()
-        console.log('Formes foi sobmetido = ', nome, cargo, imagem, time)
+    const aoSalvar = (evento) => {
+        evento.preventDefault()
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
+
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
+
     return (
         <section className="formulario">
             <form onSubmit={aoSalvar}>
@@ -52,7 +54,7 @@ const Formulario = () => {
                 <ListaSuspensa 
                     obrigatorio={true} 
                     label="Time" 
-                    itens={times} 
+                    itens={props.times} 
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
                 />
